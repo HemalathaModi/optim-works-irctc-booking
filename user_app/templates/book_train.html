@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Book {{ train.name }}</title>
+    <style>
+        form {
+            /* border: 2px solid; */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        .btn {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 12px;
+            text-decoration: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        .green {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Book {{ train.number }} - {{ train.name }}</h2>
+    <form method="post" id="bookingForm">
+        {% csrf_token %}
+        Travel Date: <input type="date" name="date" value="{{ request.GET.date }}" required><br>
+        <h3>Passenger</h3>
+        Name: <input name="p_name" id="p_name" required><br>
+        Age: <input name="p_age" id="p_age" type="number" required><br>
+        Gender: <select name="p_gender" id="p_gender">
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select><br>
+        Berth Pref: <select name="berth" id="">
+            <option value="nothing">Nothing</option>
+            <option value="lower">Lower</option>
+            <option value="middle">Middle</option>
+            <option value="upper">Upper</option>
+        </select><br>
+
+        <h3>Payment (mock)</h3>
+        <select name="payment_method">
+            <option value="mock_card">Card (mock)</option>
+            <option value="mock_upi">UPI (mock)</option>
+        </select><br><br>
+        <button type="submit" class="btn green">Pay & Book</button>
+    </form>
+
+    <hr>
+
+
+
+
+</body>
+
+</html>

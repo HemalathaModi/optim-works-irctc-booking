@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 400px;
+            margin: 60px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .info {
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .label {
+            font-weight: bold;
+        }
+
+        a.btn {
+            display: block;
+            text-align: center;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 12px;
+            text-decoration: none;
+            color: white;
+        }
+
+        .edit-btn {
+            background: #007bff;
+        }
+
+        .logout-btn {
+            background: #dc3545;
+        }
+
+        .search {
+            background-color: rgb(98, 53, 147);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>User Profile</h2>
+
+        <div class="info">
+            <span class="label">Username:</span> {{ user.username }}
+        </div>
+
+        <div class="info">
+            <span class="label">Email:</span> {{ user.email }}
+        </div>
+
+        {% if profile %}
+        <div class="info">
+            <span class="label">Full Name:</span> {{ profile.full_name }}
+        </div>
+
+        <div class="info">
+            <span class="label">Phone:</span> {{ profile.phone }}
+        </div>
+
+        <div class="info">
+            <span class="label">Address:</span> {{ profile.address }}
+        </div>
+        {% endif %}
+
+        <a href="/edit-profile/" class="btn edit-btn">Edit Profile</a>
+        <a href="{% url 'logout' %}" class="btn logout-btn">Logout</a>
+        <a href="{% url 'home' %}" class="btn search">Book a Ticket</a>
+    </div>
+
+</body>
+
+</html>

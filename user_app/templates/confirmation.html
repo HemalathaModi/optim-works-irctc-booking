@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+
+<head>
+    <style>
+        body {
+            /* border: 2px solid; */
+            margin: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Booking Confirmed</h2>
+    <p>Booking ID: {{ booking.id }}</p>
+    <p>Train: {{ booking.train }}</p>
+    <p>Date: {{ booking.travel_date }}</p>
+    <p>Status: {{ booking.status }}</p>
+    <h3>Passengers</h3>
+    <ul>
+        {% for p in passengers %}
+        <li>{{ p.name }} - {{ p.age }} - {{ p.get_gender_display }} - {{ p.berth_preference }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'profile' %}">My Bookings</a><br>
+    <a href="{% url 'home' %}">Book a Ticket</a>
+</body>
+
+</html>

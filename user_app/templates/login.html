@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 50px;
+        }
+
+        form {
+            width: 300px;
+            margin: auto;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 8px;
+            background: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .para1,
+        h2 {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Login</h2>
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+
+    <p class="para1">Don't have an account? <a href="{% url 'signup' %}">Signup</a></p>
+</body>
+
+</html>

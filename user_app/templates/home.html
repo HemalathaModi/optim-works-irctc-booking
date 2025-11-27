@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>IRCTC train ticket booking</title>
+</head>
+
+<body>
+    <center>
+        <h1>Search Trains</h1>
+        {% if user.is_authenticated %}
+        Hello {{ user.username }} | <a href="{% url 'profile' %}">Profile</a> |
+        <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+        <a href="{% url 'login' %}">Login</a> | <a href="{% url 'signup' %}">Signup</a>
+        {% endif %}
+        <hr>
+        <form action="{% url 'search_trains' %}" method="get">
+            From (station code): <input name="from" required>
+            To (station code): <input name="to" required><br><br>
+            Date: <input name="date" type="date" required>
+            <button>Search</button>
+        </form>
+    </center>
+</body>
+
+</html>

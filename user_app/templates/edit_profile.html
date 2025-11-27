@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Edit Profile</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f4f4;
+        }
+
+        .container {
+            width: 40%;
+            margin: 50px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 8px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            border: 1px solid #bbb;
+        }
+
+        button {
+            padding: 12px 20px;
+            background: #0455a4;
+            color: white;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #033d77;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Edit Profile</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <label>Full Name</label>
+            <input type="text" name="full_name" value="{{ profile.full_name }}" required>
+
+            <label>Phone</label>
+            <input type="text" name="phone" value="{{ profile.phone }}" required>
+
+            <label>Address</label>
+            <textarea name="address" rows="3" required>{{ profile.address }}</textarea>
+
+            <button type="submit">Save Changes</button>
+        </form>
+
+
+    </div>
+
+</body>
+
+</html>

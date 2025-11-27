@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+
+<body>
+    <h2>Search Results for {{ date }}</h2>
+    {% if trains %}
+    <ul>
+        {% for train in trains %}
+        <li>{{ train.number }} - {{ train.name }} |
+            {% if user.is_authenticated %}
+            <a href="{% url 'book_train' train.id %}?date={{ date }}">Book a Train ticket</a>
+            {% else %}
+            <a href="{% url 'login' %}">Login</a>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No trains found.</p>
+    {% endif %}
+    <a href="{% url 'home' %}">Search Trains</a>
+</body>
+
+</html>
